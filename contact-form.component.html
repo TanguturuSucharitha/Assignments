@@ -1,0 +1,84 @@
+<section class="container p-5">
+    <h3>{{isNew?"Add ":"Edit "}} Contact</h3>
+
+    <form class="form" #f="ngForm">
+        <div>
+            <label>Contact Id</label>
+            <input type="number" name="cid" [(ngModel)]="contact.contactID" class="form-control"
+            [readonly]="!isNew" required="required" min="100" #cid="ngModel"/>
+            <ol *ngIf="(cid.touched || cid.dirty) && cid.invalid">
+                <li *ngIf="cid.errors.required">Cannot be left blank</li>
+                <li *ngIf="cid.errors.min">Cannot be less than 100</li>
+            </ol>
+        </div>
+
+        <div>
+            <label>FirstName</label>
+            <input type="text" name="fnm" [(ngModel)]="contact.firstName" class="form-control" required #fnm="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(fnm.touched || fnm.dirty) && fnm.invalid">
+            <li *ngIf="fnm.errors.required">Cannot be left blank</li>
+            <li *ngIf="fnm.errors.minlength">Cannot be less than 5 chars</li>
+        </ol>
+        </div>
+        <div>
+            <label>Last Name</label>
+            <input type="text" name="lnm" [(ngModel)]="contact.lastName" class="form-control" required #lnm="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(lnm.touched || lnm.dirty) && lnm.invalid">
+            <li *ngIf="lnm.errors.required">Cannot be left blank</li>
+            <li *ngIf="lnm.errors.minlength">Cannot be less than 5 chars</li>
+        </ol>
+        </div>
+        <div>
+            <label>Mobile Number</label>
+            <input type="text" name="mno" [(ngModel)]="contact.mobileNumber" class="form-control" required #mno="ngModel"
+            minlength="5" maxlength="10"/>
+            <ol *ngIf="(mno.touched || mno.dirty) && mno.invalid">
+            <li *ngIf="mno.errors.required">Cannot be left blank</li>
+            <li *ngIf="mno.errors.minlength">Cannot be less than 10 numbers</li>
+            <li *ngIf="mno.errors.minlength">Cannot use Alphabets</li>
+        </ol>
+        </div>
+        <div>
+            <label>Alternate Mobile Number</label>
+            <input type="text" name="mno2" [(ngModel)]="contact.alternateMobileNumber" class="form-control" required #mno2="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(mno2.touched || mno2.dirty) && mno2.invalid">
+            <li *ngIf="mno2.errors.required">Cannot be left blank</li>
+            <li *ngIf="mno2.errors.minlength">Cannot be less than 10 numbers</li>
+            <li *ngIf="mno.errors.minlength">Cannot use Alphabets</li>
+        </ol>
+        </div>
+        <div>
+            <label>Mail Id</label>
+            <input type="text" name="mno" [(ngModel)]="contact.mailId" class="form-control" required #mno="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(mno.touched || mno.dirty) && mno.invalid">
+            <li *ngIf="mno.errors.required">Cannot be left blank</li>
+        </ol>
+        </div>
+        <div>
+            <label>Organization</label>
+            <input type="text" name="corg" [(ngModel)]="contact.organization" class="form-control" required #corg="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(corg.touched || corg.dirty) && corg.invalid">
+            <li *ngIf="corg.errors.required">Cannot be left blank</li>
+        </ol>
+        </div>
+        <div>
+            <label>Date of Birth</label>
+            <input type="text" name="" [(ngModel)]="conatct.dobStr" class="form-control" required #dob="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(dob.touched || dob.dirty) && dob.invalid">
+            <li *ngIf="dob.errors.required">Cannot be left blank</li>
+        </ol>
+        </div>
+        
+        <div class="text-right">
+            <button type="button" name="btnSave" class="btn btn-primary"
+            [disabled]="f.invalid"
+            (click)="save()">ADD</button>
+        </div>
+    </form>
+</section>
