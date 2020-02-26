@@ -1,0 +1,47 @@
+<section class="container p-5">
+    <h3>{{isNew?"Add ":"Edit "}} Task</h3>
+
+    <form class="form" #f="ngForm">
+        <div>
+            <label>Task Id</label>
+            <input type="number" name="tid" [(ngModel)]="task.taskID" class="form-control"
+            [readonly]="!isNew" required="required" min="100" #tid="ngModel"/>
+            <ol *ngIf="(tid.touched || tid.dirty) && tid.invalid">
+                <li *ngIf="tid.errors.required">Cannot be left blank</li>
+                <li *ngIf="tid.errors.min">Cannot be less than 100</li>
+            </ol>
+        </div>
+
+        <div>
+            <label>TaskName</label>
+            <input type="text" name="tnm" [(ngModel)]="task.taskName" class="form-control" required #tnm="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(tnm.touched || tnm.dirty) && tnm.invalid">
+            <li *ngIf="tnm.errors.required">Cannot be left blank</li>
+            <li *ngIf="tnm.errors.minlength">Cannot be less than 5 chars</li>
+        </ol>
+        </div>
+        <div>
+            <label>Start Date</label>
+            <input type="text" name="" [(ngModel)]="task.startDate" class="form-control" required #startDate="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(startDate.touched || startDate.dirty) && startDate.invalid">
+            <li *ngIf="startDate.errors.required">Cannot be left blank</li>
+        </ol>
+        </div>
+        <div>
+            <label>End Date</label>
+            <input type="text" name="" [(ngModel)]="task.endDate" class="form-control" required #endDate="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(endDate.touched || endDate.dirty) && endDate.invalid">
+            <li *ngIf="endDate.errors.required">Cannot be left blank</li>
+        </ol>
+        </div>
+        
+        <div class="text-right">
+            <button type="button" name="btnSave" class="btn btn-primary"
+            [disabled]="f.invalid"
+            (click)="save()">ADD</button>
+        </div>
+    </form>
+</section>
