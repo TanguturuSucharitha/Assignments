@@ -1,0 +1,18 @@
+<section class="container.fluid p-4 bg-light">
+
+    <form class="form-inline mb-2">
+        <label for="lb">Lower Bound</label>
+        <input type="number" class="form-control" id="lb" name="lb" [(ngModel)]="lb"/>
+        <input for="ub">Upper Bound</label>
+        <input type="number" class="form-control" id="ub" name="ub" [(ngModel)]="ub"/>
+        <button type="button" class="btn btn-primary" (click)="generate()"[disabled]="isJobDone">
+            Generate
+        </button>   
+     </form>
+     <div class="bg-dark text-light p-4">
+
+        <p *ngIf="errMsg">{{errMsg}}</p>
+             <span *ngFor="let n of result">{{n}},</span>
+    </div>
+
+</section>
